@@ -1,0 +1,68 @@
+--- a/Win32/OIS_vs2010.vcxproj
++++ b/Win32/OIS_vs2010.vcxproj
+@@ -1,4 +1,4 @@
+-﻿<?xml version="1.0" encoding="utf-8"?>
++<?xml version="1.0" encoding="utf-8"?>
+ <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <ItemGroup Label="ProjectConfigurations">
+     <ProjectConfiguration Include="Debug|Win32">
+@@ -69,7 +69,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+     <CharacterSet>MultiByte</CharacterSet>
+-    <WholeProgramOptimization>true</WholeProgramOptimization>
++    <WholeProgramOptimization>false</WholeProgramOptimization>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+     <ConfigurationType>StaticLibrary</ConfigurationType>
+@@ -154,6 +154,7 @@
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+       <CallingConvention>Cdecl</CallingConvention>
++      <ProgramDataBaseFileName>$(OutDir)OIS_static_d.pdb</ProgramDataBaseFileName>
+     </ClCompile>
+     <Lib>
+       <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+@@ -183,6 +184,7 @@
+       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
++      <ProgramDataBaseFileName>$(OutDir)OIS_static.pdb</ProgramDataBaseFileName>
+     </ClCompile>
+     <Lib>
+       <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+@@ -279,10 +281,11 @@
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+       <CallingConvention>Cdecl</CallingConvention>
++      <ProgramDataBaseFileName>$(OutDir)OIS_static_d.pdb</ProgramDataBaseFileName>
+     </ClCompile>
+     <Lib>
+       <AdditionalDependencies>dxguid.lib;dinput8.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+-      <OutputFile>$(OutDir)OIS_d.lib</OutputFile>
++      <OutputFile>$(OutDir)OIS_static_d.lib</OutputFile>
+       <AdditionalOptions>/MACHINE:x64 %(AdditionalOptions)</AdditionalOptions>
+     </Lib>
+     <PostBuildEvent>
+@@ -300,7 +303,7 @@
+       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+       <OmitFramePointers>true</OmitFramePointers>
+       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+-      <WholeProgramOptimization>true</WholeProgramOptimization>
++      <WholeProgramOptimization>false</WholeProgramOptimization>
+       <AdditionalIncludeDirectories>..\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+       <StringPooling>true</StringPooling>
+@@ -313,10 +316,11 @@
+       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+       <WarningLevel>Level3</WarningLevel>
+       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
++      <ProgramDataBaseFileName>$(OutDir)OIS_static.pdb</ProgramDataBaseFileName>
+     </ClCompile>
+     <Lib>
+       <AdditionalDependencies>dxguid.lib;dinput8.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+-      <OutputFile>$(OutDir)OIS.lib</OutputFile>
++      <OutputFile>$(OutDir)OIS_static.lib</OutputFile>
+       <AdditionalOptions>/MACHINE:x64 %(AdditionalOptions)</AdditionalOptions>
+     </Lib>
+     <PostBuildEvent>

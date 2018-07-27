@@ -1,0 +1,278 @@
+// Copyright (C) 2012-2017 Promotion Software GmbH
+
+
+//[-------------------------------------------------------]
+//[ Header guard                                          ]
+//[-------------------------------------------------------]
+#pragma once
+
+
+//[-------------------------------------------------------]
+//[ Includes                                              ]
+//[-------------------------------------------------------]
+#include "qsf_editor/Export.h"
+
+#include <qsf/plugin/pluginable/PluginableManager.h>
+
+#include <QtCore/qobject.h>
+
+
+//[-------------------------------------------------------]
+//[ Forward declarations                                  ]
+//[-------------------------------------------------------]
+QT_BEGIN_NAMESPACE
+	class QSettings;
+QT_END_NAMESPACE
+namespace qsf
+{
+	namespace editor
+	{
+		class Tool;
+		class EditMode;
+		class MainWindow;
+		class Application;
+	}
+}
+
+
+//[-------------------------------------------------------]
+//[ Namespace                                             ]
+//[-------------------------------------------------------]
+namespace qsf
+{
+	namespace editor
+	{
+
+
+		//[-------------------------------------------------------]
+		//[ Classes                                               ]
+		//[-------------------------------------------------------]
+		/**
+		*  @brief
+		*    Edit mode manager class
+		*
+		*  @remarks
+		*    The edit mode manager is automatically able to use all CAMP classes which are derived from "qsf::editor::EditMode".
+		*/
+		class QSF_EDITOR_API_EXPORT EditModeManager : public QObject, public PluginableManager
+		{
+
+
+		//[-------------------------------------------------------]
+		//[ Qt definitions (MOC)                                  ]
+		//[-------------------------------------------------------]
+		Q_OBJECT	// All files using the Q_OBJECT macro need to be compiled using the Meta-Object Compiler (MOC) of Qt, else slots won't work!
+					// (VisualStudio: Header file -> Right click -> Properties -> "Custom Build Tool")
+
+
+		//[-------------------------------------------------------]
+		//[ Public Qt signals (MOC)                               ]
+		//[-------------------------------------------------------]
+		Q_SIGNALS:
+			/**
+			*  @brief
+			*    Qt signal emitted after an edit mode change has occurred
+			*
+			*  @param[in] newEditMode
+			*    The new currently selected edit mode, can be a null pointer, do not destroy the instance
+			*  @param[in] previousEditMode
+			*    The previously selected edit mode, can be a null pointer, do not destroy the instance
+			*/
+			void change(EditMode* newEditMode, EditMode* previousEditMode);
+
+
+		//[-------------------------------------------------------]
+		//[ Public methods                                        ]
+		//[-------------------------------------------------------]
+		public:
+			/**
+			*  @brief
+			*    Constructor
+			*
+			*  @param[in] mainWindow
+			*    Main window instance, the instance must stay valid as long as this edit mode manager instance exists
+			*/
+			explicit EditModeManager(MainWindow& mainWindow);
+
+			/**
+			*  @brief
+			*    Destructor
+			*/
+			virtual ~EditModeManager();
+
+			/**
+			*  @brief
+			*    Return the QSF editor application
+			*
+			*  @return
+			*    The QSF editor application, do no destroy the returned instance
+			*
+			*  @note
+			*    - Ease-of-use method
+			*/
+			Application& getApplication() const;
+
+			/**
+			*  @brief
+			*    Return the main window
+			*
+			*  @return
+			*    The main window, do no destroy the returned instance
+			*/
+			inline MainWindow& getMainWindow() const;
+
+			/**
+			*  @brief
+			*    Read settings by using Qt's "QSettings"
+			*
+			*  @param[in] qSettings
+			*    Qt settings instance to use
+			*/
+			void readSettings(QSettings& qSettings);
+
+			/**
+			*  @brief
+			*    Write settings by using Qt's "QSettings"
+			*
+			*  @param[in] qSettings
+			*    Qt settings instance to use
+			*/
+			void writeSettings(QSettings& qSettings);
+
+			//[-------------------------------------------------------]
+			//[ Selected edit mode                                    ]
+			//[-------------------------------------------------------]
+			/**
+			*  @brief
+			*    Return the currently selected edit mode
+			*
+			*  @return
+			*    The currently selected edit mode, can be a null pointer, do not destroy the instance
+			*/
+			inline EditMode* getSelectedEditMode() const;
+
+			/**
+			*  @brief
+			*    Return whether or not the currently selected edit mode is an instance of the given edit mode
+			*
+			*  @return
+			*    "true" if the currently selected edit mode is an instance of the given edit mode, else "false"
+			*/
+			template <typename T>
+			bool isSelectedEditModeInstanceOf() const;
+
+			/**
+			*  @brief
+			*    Return whether or not the currently selected edit mode is an instance of the given edit mode
+			*
+			*  @param[in] id
+			*    The unique edit mode identifier generated by "qsf::StringHash"
+			*
+			*  @return
+			*    "true" if the currently selected edit mode is an instance of the given edit mode, else "false"
+			*/
+			bool isSelectedEditModeInstanceOfById(const StringHash& id) const;
+
+			/**
+			*  @brief
+			*    Return the tool which selected the currently selected edit mode
+			*
+			*  @return
+			*    The tool which selected the currently selected edit mode, can be a null pointer (e.g. the edit mode wasn't selected by using a tool), do not destroy the instance
+			*/
+			inline Tool* getToolWhichSelectedEditMode() const;
+
+			/**
+			*  @brief
+			*    Select the requested edit mode instance of a certain type
+			*
+			*  @param[in] tool
+			*    Optional information about the tool which selected the edit mode, can be a null pointer (e.g. the edit mode wasn't selected by using a tool)
+			*/
+			template <typename T> void selectEditMode(Tool* tool = nullptr);
+
+			/**
+			*  @brief
+			*    Select the requested edit mode instance by using its unique identifier
+			*
+			*  @param[in] id
+			*    The unique edit mode identifier generated by "qsf::StringHash"
+			*  @param[in] tool
+			*    Optional information about the tool which selected the edit mode, can be a null pointer (e.g. the edit mode wasn't selected by using a tool)
+			*/
+			void selectEditModeById(const StringHash& id, Tool* tool = nullptr);
+
+			/**
+			*  @brief
+			*    Select the requested edit mode instance by using a given edit mode pointer
+			*
+			*  @param[in] editMode
+			*    Edit mode to select, can be a null pointer
+			*  @param[in] tool
+			*    Optional information about the tool which selected the edit mode, can be a null pointer (e.g. the edit mode wasn't selected by using a tool)
+			*/
+			void selectEditModeByPointer(EditMode* editMode, Tool* tool = nullptr);
+
+			/**
+			*  @brief
+			*    Return the edit mode which was selected before the currently selected edit mode got selected
+			*
+			*  @return
+			*    The edit mode which was selected before the currently selected edit mode got selected, can be a null pointer, do not destroy the instance
+			*/
+			inline EditMode* getPreviousEditMode() const;
+
+			/**
+			*  @brief
+			*    Let the edit mode manager forget about the previous edit mode
+			*
+			*  @note
+			*    - Do not overuse this method, it's only meant for some rare edit modes where it's pointless or even dangerous to allow switching "back" to the previous edit mode
+			*    - Automatically sets the object edit mode as the previous edit mode because the object mode is considered to be the default edit mode (it's fine to have this one fixed build in)
+			*/
+			void forgetAboutPreviousEditMode();
+
+
+		//[-------------------------------------------------------]
+		//[ Protected virtual qsf::PluginableManager methods      ]
+		//[-------------------------------------------------------]
+		protected:
+			virtual void classAdded(const camp::Class& added) override;
+
+
+		//[-------------------------------------------------------]
+		//[ Private data                                          ]
+		//[-------------------------------------------------------]
+		private:
+			MainWindow* mMainWindow;				///< QSF editor main window instance, always valid, do not destroy the instance
+			EditMode*	mSelectedEditMode;			///< The currently selected edit mode, can be a null pointer, do not destroy the instance
+			EditMode*	mPreviousEditMode;			///< The edit mode which was selected before the currently selected edit mode got selected, can be a null pointer, do not destroy the instance
+			Tool*		mToolWhichSelectedEditMode;	///< The tool which selected the currently selected edit mode, can be a null pointer (e.g. the edit mode wasn't selected by using a tool), do not destroy the instance
+
+
+		//[-------------------------------------------------------]
+		//[ CAMP reflection system                                ]
+		//[-------------------------------------------------------]
+		QSF_CAMP_RTTI()	// Only adds the virtual method "campClassId()", nothing more
+
+
+		};
+
+
+//[-------------------------------------------------------]
+//[ Namespace                                             ]
+//[-------------------------------------------------------]
+	} // editor
+} // qsf
+
+
+//[-------------------------------------------------------]
+//[ Implementation                                        ]
+//[-------------------------------------------------------]
+#include "qsf_editor/editmode/EditModeManager-inl.h"
+
+
+//[-------------------------------------------------------]
+//[ CAMP reflection system                                ]
+//[-------------------------------------------------------]
+QSF_CAMP_TYPE_NONCOPYABLE(qsf::editor::EditModeManager)

@@ -1,0 +1,33 @@
+Index: project/vc10/nvconfig.h
+===================================================================
+--- project/vc10/nvconfig.h	(revision 1369)
++++ project/vc10/nvconfig.h	(working copy)
+@@ -18,5 +18,6 @@
+ #define HAVE_JPEG
+ #define HAVE_TIFF
+ #endif*/
++#define HAVE_TIFF
+ 
+ #endif // NV_CONFIG
+Index: src/nvimage/ImageIO.cpp
+===================================================================
+--- src/nvimage/ImageIO.cpp	(revision 1369)
++++ src/nvimage/ImageIO.cpp	(working copy)
+@@ -1036,7 +1036,7 @@
+ 
+ 	for (uint c=0; c<spp; c++ )
+ 	{
+-	    float * dst = fimage->scanline(y, c);
++	    float * dst = fimage->scanline(c, y, 0);
+ 
+ 	    for(uint x = 0; x < width; x++)
+ 	    {
+@@ -1112,7 +1112,7 @@
+     {
+         for (int c = 0; c < iC; c++)
+         {
+-            const float * src = fimage->scanline(y, base_component + c);
++            const float * src = fimage->scanline(base_component + c, y, 0);
+             for (int x = 0; x < iW; x++) scanline[x * iC + c] = src[x];
+         }
+         if (TIFFWriteScanline(image, scanline, y, 0)==-1)

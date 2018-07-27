@@ -1,0 +1,9 @@
+prefix=E:/work/qsf-external-windows/msvc14/x64/camp
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: camp
+Description: CAMP is a multi-purpose reflection library for C++
+Version: 0.8.0
+CFlags: -I${includedir}
+Libs: -L${libdir} -lcamp

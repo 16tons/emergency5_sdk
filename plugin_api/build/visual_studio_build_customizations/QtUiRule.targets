@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PropertyPageSchema
+      Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+      <AvailableItemName Include="QtUI">
+        <Targets>_QtUI</Targets>
+      </AvailableItemName>
+  </ItemGroup>
+  <UsingTask
+	TaskName="QtUI"
+	TaskFactory="XamlTaskFactory"
+	AssemblyName="Microsoft.Build.Tasks.v4.0">
+	<Task>$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml</Task> 
+  </UsingTask>
+  <Target
+    Name="_QtUI"
+    BeforeTargets="ClCompile"
+    AfterTargets="CustomBuild"
+    Condition="'@(QtUI)' != ''"
+    Outputs="%(QtUI.OutputFileName)"
+    Inputs="%(QtUI.Identity);$(MSBuildProjectFile)"
+    DependsOnTargets="_SelectedFiles">
+    <ItemGroup Condition="'@(SelectedFiles)' != ''">
+	  <QtUI Remove="@(QtUI)" Condition="'%(Identity)' != '@(SelectedFiles)'" />
+    </ItemGroup>
+	<ItemGroup>
+		<QtUI_tlog Include="%(QtUI.OutputFileName)" Condition="'%(QtUI.OutputFileName)' != '' and '%(QtUI.ExcludedFromBuild)' != 'true'">
+			<Source>@(QtUI, '|')</Source>
+		</QtUI_tlog>
+	</ItemGroup>
+    <Message
+      Importance="High"
+      Text="%(QtUI.ExecutionDescription)" />
+	<WriteLinesToFile
+		Condition="'@(QtUI_tlog)' != '' and '%(QtUI_tlog.ExcludedFromBuild)' != 'true'"
+		File="$(IntDir)$(ProjectName).ui.1.tlog"
+		Lines="^%(QtUI_tlog.Source);@(QtUI_tlog-&gt;'%(Fullpath)')"/>
+	<QtUI
+	  Condition="'@(QtUI)' != '' and '%(QtUI.ExcludedFromBuild)' != 'true'"
+      CommandLineTemplate="%(QtUI.CommandLineTemplate)"
+	  OutputFileName="%(QtUI.OutputFileName)"
+	  AdditionalOptions="%(QtUI.AdditionalOptions)"
+      Inputs="%(QtUI.Identity)" />
+  </Target>
+</Project>

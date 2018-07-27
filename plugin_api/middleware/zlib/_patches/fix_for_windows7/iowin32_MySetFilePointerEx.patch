@@ -1,0 +1,13 @@
+Index: zlib-1.2.8/contrib/minizip/iowin32.c
+===================================================================
+--- zlib-1.2.8/contrib/minizip/iowin32.c	(revision 570)
++++ zlib-1.2.8/contrib/minizip/iowin32.c	(working copy)
+@@ -243,7 +243,7 @@
+     return SetFilePointerEx(hFile, pos, newPos, dwMoveMethod);
+ #else
+     LONG lHigh = pos.HighPart;
+-    DWORD dwNewPos = SetFilePointer(hFile, pos.LowPart, &lHigh, FILE_CURRENT);
++    DWORD dwNewPos = SetFilePointer(hFile, pos.LowPart, &lHigh, dwMoveMethod);
+     BOOL fOk = TRUE;
+     if (dwNewPos == 0xFFFFFFFF)
+         if (GetLastError() != NO_ERROR)

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\plugin">
+      <UniqueIdentifier>{8d5a3224-081d-45b3-84c1-5275bbb3b665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\component">
+      <UniqueIdentifier>{69163cd8-ee03-43e5-8c8a-1be17a437f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\action">
+      <UniqueIdentifier>{2eabeb9d-fbd4-4f20-bb32-555f66260695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\command">
+      <UniqueIdentifier>{1d61634b-7c61-42bd-8183-f92930e3194c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\event">
+      <UniqueIdentifier>{01736d94-91b9-4c7a-877f-75dd07436b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logic">
+      <UniqueIdentifier>{3c7e422b-3a80-4d20-9007-1b2046d38065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logic\observer">
+      <UniqueIdentifier>{42bcd72f-2ccd-48a2-b7af-c977cd6129d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{1883b027-5615-434e-882b-330655fd5499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\multiplayer">
+      <UniqueIdentifier>{7fcccf37-834d-4520-9e95-633c87b0b538}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="game_plugin\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\PrecompiledHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\plugin\Plugin.cpp">
+      <Filter>Source Files\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\component\IndicatorComponent.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\action\CheerAction.cpp">
+      <Filter>Source Files\action</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\command\CheerCommand.cpp">
+      <Filter>Source Files\command</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\event\MedicalCheerEvent.cpp">
+      <Filter>Source Files\event</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\event\MedicalCheerEventFactory.cpp">
+      <Filter>Source Files\event</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\logic\observer\CheeringObserver.cpp">
+      <Filter>Source Files\logic\observer</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\game\GameListener.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\multiplayer\IndicatorData.cpp">
+      <Filter>Source Files\multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="game_plugin\multiplayer\DataCacheItemFactoryListener.cpp">
+      <Filter>Source Files\multiplayer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game_plugin\Export.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\PrecompiledHeader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\component\IndicatorComponent.h">
+      <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\component\IndicatorComponent-inl.h">
+      <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\action\CheerAction.h">
+      <Filter>Source Files\action</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\command\CheerCommand.h">
+      <Filter>Source Files\command</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\event\MedicalCheerEvent.h">
+      <Filter>Source Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\event\MedicalCheerEventFactory.h">
+      <Filter>Source Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\event\MedicalCheerEventFactory-inl.h">
+      <Filter>Source Files\event</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\logic\observer\CheeringObserver.h">
+      <Filter>Source Files\logic\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\game\GameListener.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\multiplayer\IndicatorData.h">
+      <Filter>Source Files\multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="game_plugin\multiplayer\DataCacheItemFactoryListener.h">
+      <Filter>Source Files\multiplayer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game_plugin\plugin\Plugin-inl.h">
+      <Filter>Source Files\plugin</Filter>
+    </None>
+    <None Include="game_plugin.pro" />
+    <None Include="game_plugin\plugin\Plugin.h">
+      <Filter>Source Files\plugin</Filter>
+    </None>
+  </ItemGroup>
+</Project>

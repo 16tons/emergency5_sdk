@@ -1,0 +1,51 @@
+Index: src/nvimage/ImageIO.cpp
+===================================================================
+--- src/nvimage/ImageIO.cpp	(revision 537)
++++ src/nvimage/ImageIO.cpp	(working copy)
+@@ -1586,6 +1586,46 @@
+                 }
+             }
+             break;
++        case FIT_RGB16:
++            floatImage->allocate(3, w, h);
++
++            for (int y=0; y < h; y++)
++            {
++                const FIRGB16 * src = (const FIRGB16 *)FreeImage_GetScanLine(bitmap, h - y - 1 );
++
++                float * dst_red = floatImage->scanline(0, y, 0);
++                float * dst_green = floatImage->scanline(1, y, 0);
++                float * dst_blue = floatImage->scanline(2, y, 0);
++
++                for (int x=0; x < w; x++)
++                {
++                    dst_red[x] = float(src[x].red) / 65535;
++                    dst_green[x] = float(src[x].green) / 65535;
++                    dst_blue[x] = float(src[x].blue) / 65535;
++                }
++            }
++            break;
++        case FIT_RGBA16:
++            floatImage->allocate(4, w, h);
++
++            for (int y=0; y < h; y++)
++            {
++                const FIRGBA16 * src = (const FIRGBA16 *)FreeImage_GetScanLine(bitmap, h - y - 1 );
++
++                float * dst_red = floatImage->scanline(0, y, 0);
++                float * dst_green = floatImage->scanline(1, y, 0);
++                float * dst_blue = floatImage->scanline(2, y, 0);
++                float * dst_alpha = floatImage->scanline(3, y, 0);
++
++                for (int x=0; x < w; x++)
++                {
++                    dst_red[x] = float(src[x].red) / 65535;
++                    dst_green[x] = float(src[x].green) / 65535;
++                    dst_blue[x] = float(src[x].blue) / 65535;
++                    dst_alpha[x] = float(src[x].alpha) / 65535;
++                }
++            }
++            break;
+         default:
+             delete floatImage;
+             floatImage = NULL;

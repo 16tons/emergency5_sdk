@@ -1,0 +1,17 @@
+{
+    "Format":
+    {
+        "Type": "AssetCompiler",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "CompilerClass": "CopyAssetCompiler"
+    },
+    "Config":
+    {
+        "ConfigRevision": "1",
+        "ProcessingPriority": "0.40000000596046448",
+        "FileExtension": "dds"
+    }
+}

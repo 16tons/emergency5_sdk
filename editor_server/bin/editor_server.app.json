@@ -1,0 +1,19 @@
+{
+    "Format":
+    {
+        "Type": "Application",
+        "Version": "1"
+    },
+    "Application":
+    {
+        "ApplicationName": "EMERGENCY 5 Editor Server",
+        "ApplicationVersion": "4.1.0",
+        "OrganizationName": "Promotion Software GmbH",
+        "OrganizationDomain": "promotion-software.de",
+        "SplashScreen": "../../data/em5_server_splash_screen.bmp",
+        "Plugins": "qsf_logic qsf_ai qsf_compositing qsf_game qsf_editor_base em5",
+        "Projects": "qsf em5",
+        "CurrentProject": "em5",
+        "ApplicationClassName": "qsf::editor::server::Application"
+    }
+}

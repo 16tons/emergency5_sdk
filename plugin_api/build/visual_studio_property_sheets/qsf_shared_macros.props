@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <QsfScriptDir>$(QsfDir)build\visual_studio_scripts\</QsfScriptDir>
+    <CfgExtension Condition="'$(Configuration)'=='Debug'">d</CfgExtension>
+    <CfgExtension Condition="'$(Configuration)'=='DebugS'">d_static</CfgExtension>
+    <CfgExtension Condition="'$(Configuration)'=='Release'"></CfgExtension>
+    <CfgExtension Condition="'$(Configuration)'=='ReleaseS'">_static</CfgExtension>
+    <CfgExtension Condition="'$(Configuration)'=='Retail'">r</CfgExtension>
+    <CfgExtension Condition="'$(Configuration)'=='RetailS'">r_static</CfgExtension>
+    <QtPlatform>win32-msvc2012</QtPlatform>
+    <QtQMakeExecutable>$(QsfDir)external\_windows_x86\qt\bin\qmake.exe</QtQMakeExecutable>
+    <QtLupdateExecutable>$(QsfDir)external\_windows_x86\qt\bin\lupdate.exe -silent</QtLupdateExecutable>
+    <QtLreleaseExecutable>$(QsfDir)external\_windows_x86\qt\bin\lrelease.exe -silent</QtLreleaseExecutable>
+    <QtMocExecutable>$(QsfDir)external\_windows_x86\qt\bin\moc.exe</QtMocExecutable>
+    <QtUicExecutable>$(QsfDir)external\_windows_x86\qt\bin\uic.exe</QtUicExecutable>
+    <QtRccExecutable>$(QsfDir)external\_windows_x86\qt\bin\rcc.exe</QtRccExecutable>
+    <QtMocOutput>$(ProjectDir)..\tmp\qt\moc\$(ProjectName)\</QtMocOutput>
+    <QtUicOutput>$(ProjectDir)..\tmp\qt\uic\$(ProjectName)\</QtUicOutput>
+    <QtRccOutput>$(ProjectDir)..\tmp\qt\rcc\$(ProjectName)\</QtRccOutput>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>ENDUSER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="QsfScriptDir">
+      <Value>$(QsfScriptDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CfgExtension">
+      <Value>$(CfgExtension)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtLupdateExecutable">
+      <Value>$(QtLupdateExecutable)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtMocExecutable">
+      <Value>$(QtMocExecutable)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtUicExecutable">
+      <Value>$(QtUicExecutable)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtRccExecutable">
+      <Value>$(QtRccExecutable)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtMocOutput">
+      <Value>$(QtMocOutput)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtUicOutput">
+      <Value>$(QtUicOutput)</Value>
+    </BuildMacro>
+    <BuildMacro Include="QtRccOutput">
+      <Value>$(QtRccOutput)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

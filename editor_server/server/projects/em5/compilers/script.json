@@ -1,0 +1,17 @@
+{
+    "Format":
+    {
+        "Type": "AssetCompiler",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "CompilerClass": "CopyAssetCompiler"
+    },
+    "Config":
+    {
+        "ConfigRevision": "0",
+        "ProcessingPriority": "0.5",
+        "FileExtension": "lua"
+    }
+}

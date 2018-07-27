@@ -1,0 +1,12 @@
+Index: src/nvcore/DefsVcWin32.h
+===================================================================
+--- src/nvcore/DefsVcWin32.h	(revision 571)
++++ src/nvcore/DefsVcWin32.h	(working copy)
+@@ -19,7 +19,6 @@
+ #define NV_CONST
+ 
+ // Set standard function names.
+-#define snprintf _snprintf
+ #if _MSC_VER < 1500
+ #   define vsnprintf _vsnprintf
+ #endif

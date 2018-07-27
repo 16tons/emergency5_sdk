@@ -1,0 +1,59 @@
+{
+    "Format":
+    {
+        "Type": "Project",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "Name": "em5",
+        "Description": "Emergency 5 project"
+    },
+    "AssetPackages":
+    [
+        "local"
+    ],
+    "AssetCompilers":
+    [
+        "terrain",
+        "texture",
+        "em5_activity",
+        "texture_lut",
+        "ogre_terrain",
+        "particles",
+        "em5_diagnosis",
+        "ai_traffic_lane_world",
+        "mesh",
+        "em5_unitpool",
+        "em5_soundtrack",
+        "ParameterGroup",
+        "ogre_material",
+        "localization",
+        "sequence",
+        "em5_firematerial",
+        "em5_order_info",
+        "material",
+        "weather_state",
+        "em5_specs",
+        "script",
+        "font",
+        "unknown",
+        "ai_reaction_table_configurations",
+        "em5_injury",
+        "skeleton",
+        "em5_spawnpool",
+        "em5_eventpool",
+        "weather_configuration",
+        "em5_medicalcare",
+        "texture_cube",
+        "map",
+        "em5_spawngroup",
+        "ai_traffic_light_schedule",
+        "em5_eventdensity",
+        "audio",
+        "weather_transition",
+        "em5_gamemode",
+        "ai_area_type",
+        "prefab"
+    ]
+}

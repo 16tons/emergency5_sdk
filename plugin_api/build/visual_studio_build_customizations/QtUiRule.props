@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+	<QtUI>
+	  <OutputFileName>$(QtUicOutput)\ui_%(Filename).h</OutputFileName>
+      <CommandLineTemplate>"$(QsfDir)build\visual_studio_scripts\qt_uic.bat" $(QtUicExecutable) %(FullPath) $(QtUicOutput) %(Filename)</CommandLineTemplate>
+      <ExecutionDescription>Compiling %(Filename)%(Extension) using Qt UIC</ExecutionDescription>
+    </QtUI>
+  </ItemDefinitionGroup>
+</Project>

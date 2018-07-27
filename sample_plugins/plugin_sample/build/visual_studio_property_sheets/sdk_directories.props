@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <QsfDir>$(SolutionDir)..\..\plugin_api\</QsfDir>
+    <EM5SdkDir>$(SolutionDir)..\..\plugin_api\</EM5SdkDir>
+    <EM5GameDir>$(SolutionDir)..\..\..\</EM5GameDir>
+    <MyModDir>$(SolutionDir)..\..\..\data\cheering_sample\</MyModDir>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="QsfDir">
+      <Value>$(QsfDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="EM5SdkDir">
+      <Value>$(EM5SdkDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="EM5GameDir">
+      <Value>$(EM5GameDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="MyModDir">
+      <Value>$(MyModDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

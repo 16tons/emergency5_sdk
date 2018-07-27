@@ -1,0 +1,14 @@
+Index: Source/Core/StyleSheetParser.cpp
+===================================================================
+--- Source/Core/StyleSheetParser.cpp	(revision 571)
++++ Source/Core/StyleSheetParser.cpp	(working copy)
+@@ -88,7 +88,8 @@
+ {
+ 	stream = new StreamMemory((const byte*)properties.CString(), properties.Length());
+ 	bool success = ReadProperties(parsed_properties);
+-	stream->Close();
++	stream->RemoveReference();
++	stream = NULL;
+ 	return success;
+ }
+ 

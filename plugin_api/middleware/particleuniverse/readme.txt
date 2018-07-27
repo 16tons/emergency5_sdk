@@ -1,0 +1,11 @@
+Particle Universe - Customized version
+- Starting with Particle Universe Plugin V1.6 ("PU_V1.6.zip"): MIT license
+- Online: http://www.fxpression.com/
+- OGRE 2.0 ready
+	- At the point in time of migrating to OGRE 2.0, there was no working Particle Universe version for it available
+		- https://github.com/scrawl/particleuniverse/tree/Ogre_2.0 did not work
+	- Constructed an own Particle Universe version
+		- Used https://github.com/scrawl/particleuniverse/tree/Ogre_2.1 as start point
+		- Backported it to OGRE 2.0
+		- Fixed a bug inside "ParticleUniverse::BillboardRenderer::copyAttributesTo()": "Copy attributes in case there is a billboardset (which should be available)" does no longer make sense with the changes other persons made to Particle Universe
+		- Reapplied our "bug_PU_EVT_NO_PARTICLES_LEFT_setIterationInterval" bugfix

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <ItemDefinitionGroup>
+    <PostBuildEvent>
+      <Command>
+echo Post-Build: Updating Qt translation files...
+set QMAKESPEC=$(QtPlatform)
+$(QtLupdateExecutable) $(ProjectName).pro
+$(QtLreleaseExecutable) data/localization/en/$(ProjectName).ts
+
+echo Post-Build: Copying binary to mod plugin directory...
+if not exist "$(MyModDir)x64" md "$(MyModDir)x64"
+copy $(TargetPath) $(MyModDir)x64
+
+echo Post-Build: Copying language files to mod plugin directory...
+call "$(QsfDir)build\visual_studio_scripts\postbuild\copy_ts_files_userplugin.bat" "data\localization" "$(MyModDir)content\localization"
+
+rem Force post-build event in each build
+call "$(QsfDir)build\visual_studio_scripts\postbuild\delete_lastbuildstate.bat" $(ProjectName) $(IntDir) $(TargetExt)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+</Project>

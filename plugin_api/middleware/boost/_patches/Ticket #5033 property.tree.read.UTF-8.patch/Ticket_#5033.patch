@@ -1,0 +1,20 @@
+--- a/boost/property_tree/detail/json_parser_read.hpp
++++ b/boost/property_tree/detail/json_parser_read.hpp
+@@ -146,7 +146,16 @@ namespace boost { namespace property_tree { namesp
+             a_unicode(context &c): c(c) { }
+             void operator()(unsigned long u) const
+             {
+-                u = (std::min)(u, static_cast<unsigned long>((std::numeric_limits<Ch>::max)()));
++                // [CHANGED] https://svn.boost.org/trac/boost/attachment/ticket/5033/property.tree.read.UTF-8.patch
++                // "Boost.PropertyTree has a fix in version 1.45 to write narrow characters, in
++                // case char is signed, with highest bit set correctly.  This this a similar
++                // fix for the read side."
++                typedef typename make_unsigned<Ch>::type UCh; 
++                u = (std::min)(u, static_cast<unsigned long>((std::numeric_limits<UCh>::max)())); 
++
++                // Was
++                // u = (std::min)(u, static_cast<unsigned long>((std::numeric_limits<Ch>::max)()));
++
+                 c.string += Ch(u);
+             }
+         };

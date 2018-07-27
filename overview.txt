@@ -1,0 +1,21 @@
+
+EMERGENCY 5 and EMERGENCY 2016 SDK -- Overview
+
+
+editor_server
+	Holds the EMERGENCY World Builder Online Server software.
+	
+tools
+	The Qt Linguist tool can be used to edit translation files (.ts) and (.qm) for the editor and the game.
+
+sample_mods
+	Some example mods you can have a look at to get started with modding.
+
+sample_plugins
+	Visual Studio 2015 solutions to use as starting points for creating plugins.
+
+plugin_api
+	C++ plugin API consisting of everything needed to build plugins on top of EMERGENCY 5 and 2016.
+
+data
+	Additional data you could find useful.

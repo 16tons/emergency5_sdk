@@ -1,0 +1,5 @@
+Known Issue in x86/Debug:
+[11:35:42 | Edited 11:39:14] Christoffer Anselm: in glm/detail/type_mat*x*.hpp wird size_type als std::size_t typedef't, aber in asserts dann mit length_t verglichen, das nach GLSL spec ein int sein soll.
+Wenn man nun das Flag setzt um length_t als std::size_t zu typedef'en knallts wieder ganz woanders, da dort dann ein for(int i = 0;...) { if (i < this->length()) ...} probleme macht...
+GLM gibts also wohl zzt nicht gänzlich ohne warnings :/
+[11:38:28 | Edited 11:39:09] Christoffer Anselm: Lange Rede kurzer Sinn: Problem liegt tatsache in GLM, mit den aktuellen implementationen/flags ist aber ausschließlich x86 Debug broken. Ich votiere für so lassen, bis der Schuh anfängt zu drücken, dann glm/detail/type_mat*x*.hpp händisch fixen.

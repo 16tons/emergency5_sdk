@@ -1,0 +1,15 @@
+{
+    "Format":
+    {
+        "Type": "Project",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "Name": "qsf",
+        "Description": "Quadriga Simulation Framework (QSF)"
+    },
+    "AssetPackages":
+    [
+    ]
+}

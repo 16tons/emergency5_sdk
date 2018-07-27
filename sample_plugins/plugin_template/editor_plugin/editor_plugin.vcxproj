@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Retail|x64">
+      <Configuration>Retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F970965-31BB-4A58-BB5A-1C674CB3C397}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>editor_plugin</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\build\visual_studio_property_sheets\sdk_directories.props" />
+    <Import Project="$(QsfDir)build\visual_studio_property_sheets\qsf_shared_macros.props" />
+    <Import Project="postbuildevent.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtMocRule.props" />
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtUiRule.props" />
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtRccRule.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>..\tmp\vc11\$(PlatformName)_$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\$(PlatformTarget)$(CfgExtension)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>..\tmp\vc11\$(PlatformName)_$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>..\bin\$(PlatformTarget)$(CfgExtension)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;QSF_X64;BOOST_FILESYSTEM_NO_DEPRECATED;BOOST_THREAD_VERSION=4;BOOST_ENABLE_ASSERT_HANDLER;NDEBUG;_WINDOWS;_USRDLL;QT_NO_KEYWORDS;EDITORPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\game_plugin;$(EM5SdkDir)em5;$(QtUicOutput);$(QsfDir)qsf;$(QsfDir)qsf_logic;$(QsfDir)qsf_ai;$(QsfDir)qsf_game;$(QsfDir)qsf_editor_base;$(QsfDir)qsf_editor;$(QsfDir)external\tbb\include;$(QsfDir)external\vld\include;$(QsfDir)external\boost\include;$(QsfDir)external\camp\include;$(QsfDir)external\glm\include;$(QsfDir)external\bullet\include\bullet;$(QsfDir)external\qt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>editor_plugin/PrecompiledHeader.h</PrecompiledHeaderFile>
+      <AdditionalOptions>-Zm150 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(QsfDir)external\_windows_$(PlatformTarget)\vld\lib;$(QsfDir)external\_windows_$(PlatformTarget)\boost\lib;$(QsfDir)external\_windows_$(PlatformTarget)\camp\lib;$(QsfDir)external\_windows_$(PlatformTarget)\qt\lib;$(QsfDir)external\_windows_$(PlatformTarget)\tbb\lib;$(QsfDir)lib\$(PlatformTarget)r;$(EM5SdkDir)lib\$(PlatformTarget)r;..\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>camp.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;qsf.lib;qsf_ai.lib;qsf_editor_base.lib;qsf_editor.lib;qsf_game.lib;em5.lib;game_plugin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\lib\$(PlatformTarget)$(CfgExtension)\$(TargetName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Retail|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;QSF_X64;BOOST_FILESYSTEM_NO_DEPRECATED;BOOST_THREAD_VERSION=4;BOOST_ENABLE_ASSERT_HANDLER;NDEBUG;_WINDOWS;_USRDLL;QT_NO_KEYWORDS;EDITORPLUGIN_EXPORTS;RETAIL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;..\game_plugin;$(EM5SdkDir)em5;$(QtUicOutput);$(QsfDir)qsf;$(QsfDir)qsf_logic;$(QsfDir)qsf_ai;$(QsfDir)qsf_game;$(QsfDir)qsf_editor_base;$(QsfDir)qsf_editor;$(QsfDir)external\tbb\include;$(QsfDir)external\vld\include;$(QsfDir)external\boost\include;$(QsfDir)external\camp\include;$(QsfDir)external\glm\include;$(QsfDir)external\bullet\include\bullet;$(QsfDir)external\qt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>editor_plugin/PrecompiledHeader.h</PrecompiledHeaderFile>
+      <AdditionalOptions>-Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <StringPooling>true</StringPooling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(QsfDir)external\_windows_$(PlatformTarget)\vld\lib;$(QsfDir)external\_windows_$(PlatformTarget)\tbb\lib;$(QsfDir)external\_windows_$(PlatformTarget)\boost\lib;$(QsfDir)external\_windows_$(PlatformTarget)\camp\lib;$(QsfDir)external\_windows_$(PlatformTarget)\qt\lib;$(QsfDir)lib\$(PlatformTarget)r;$(EM5SdkDir)lib\$(PlatformTarget)r;..\lib\$(PlatformTarget)r</AdditionalLibraryDirectories>
+      <AdditionalDependencies>camp.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;qsf.lib;qsf_ai.lib;qsf_editor_base.lib;qsf_editor.lib;qsf_game.lib;em5.lib;game_plugin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\lib\$(PlatformTarget)$(CfgExtension)\$(TargetName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tmp\qt\rcc\editor_plugin\res_ressources.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="editor_plugin\Main.cpp" />
+    <ClCompile Include="editor_plugin\plugin\Plugin.cpp" />
+    <ClCompile Include="editor_plugin\PrecompiledHeader.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>editor_plugin/PrecompiledHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="$(QtMocOutput)\moc_Plugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="editor_plugin\Export.h" />
+    <QtMOC Include="editor_plugin\plugin\Plugin.h" />
+    <ClInclude Include="editor_plugin\PrecompiledHeader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRCC Include="editor_plugin\ressources\ressources.qrc">
+      <FileType>Document</FileType>
+    </QtRCC>
+    <None Include="editor_plugin\plugin\Plugin-inl.h" />
+    <None Include="editor_plugin.pro" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtMocRule.targets" />
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtUiRule.targets" />
+    <Import Project="$(QsfDir)build\visual_studio_build_customizations\QtRccRule.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,17 @@
+{
+    "Format":
+    {
+        "Type": "AssetCompiler",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "CompilerClass": "CopyAssetCompiler"
+    },
+    "Config":
+    {
+        "ConfigRevision": "1",
+        "ProcessingPriority": "0.69999998807907104",
+        "FileExtension": "skeleton"
+    }
+}

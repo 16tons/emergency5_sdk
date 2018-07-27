@@ -1,0 +1,17 @@
+{
+    "Format":
+    {
+        "Type": "AssetCompiler",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "CompilerClass": "CopyAssetCompiler"
+    },
+    "Config":
+    {
+        "ConfigRevision": "1",
+        "ProcessingPriority": "1",
+        "FileExtension": "json"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "Format":
+    {
+        "Type": "AssetPackage",
+        "Version": "1"
+    },
+    "Properties":
+    {
+        "Name": "local",
+        "Description": "",
+        "MountPoint": "em5",
+        "IsManaged": "false"
+    },
+    "Assets": ""
+}

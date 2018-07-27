@@ -1,0 +1,40 @@
+--- a/winbuild/Makefile.vc
++++ b/winbuild/Makefile.vc
+@@ -185,7 +185,7 @@ $(MODE):
+ 	@SET USE_IPV6=$(USE_IPV6)
+ 	@SET USE_SSPI=$(USE_SSPI)
+ 	@SET USE_WINSSL=$(USE_WINSSL)
+-	@$(MAKE) /NOLOGO /F MakefileBuild.vc
++	@$(MAKE) /NOLOGO /F MakefileBuild.vc package
+ 
+ copy_from_lib:
+ 	echo copying .c...
+--- a/winbuild/MakefileBuild.vc
++++ b/winbuild/MakefileBuild.vc
+@@ -112,7 +112,7 @@ SSL_LIBS     = libeay32.lib ssleay32.lib
+ USE_SSL      = true
+ SSL          = dll
+ !ELSEIF "$(WITH_SSL)"=="static"
+-SSL_LIBS     = libeay32.lib ssleay32.lib gdi32.lib user32.lib crypt32.lib
++# SSL_LIBS     = libeay32.lib ssleay32.lib gdi32.lib user32.lib crypt32.lib
+ USE_SSL      = true
+ SSL          = static
+ !ENDIF
+@@ -127,7 +127,7 @@ ZLIB_LIBS   = zlib.lib
+ USE_ZLIB    = true
+ ZLIB        = dll
+ !ELSEIF "$(WITH_ZLIB)"=="static"
+-ZLIB_LIBS   = zlib_a.lib
++# ZLIB_LIBS   = zlib_a.lib
+ USE_ZLIB    = true
+ ZLIB        = static
+ !ENDIF
+@@ -326,7 +326,7 @@ LFLAGS = $(LFLAGS) $(LFLAGS_PDB)
+ 
+ LIB_DIROBJ = ..\builds\$(CONFIG_NAME_LIB)-obj-lib
+ CURL_DIROBJ = ..\builds\$(CONFIG_NAME_LIB)-obj-curl
+-DIRDIST = ..\builds\$(CONFIG_NAME_LIB)\
++DIRDIST = ..\build\$(MACHINE)\
+ 
+ #
+ # curl.exe
