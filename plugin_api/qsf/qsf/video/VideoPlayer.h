@@ -86,8 +86,10 @@ namespace qsf
 		*
 		*  @param[in] shaderYuvConversion
 		*    "true" if the YUV conversion is done by a shader instead of the CPU, else "false"
+		*  @return
+		*    "true" if everything went fine, "false" if file could not be opened
 		*/
-		void setVideoByFilename(const std::string& videoPath, bool shaderYuvConversion = false);
+		bool setVideoByFilename(const std::string& videoPath, bool shaderYuvConversion = false);
 
 		/**
 		*  @brief

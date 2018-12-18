@@ -655,7 +655,7 @@ namespace em5
 		*        (1) ID of the fire receiver component entity
 		*        (2) "true" if the source was added "false" otherwise
 		*        (3) ID cooling energy source
-		*    - No Parameters
+		*    - No parameters
 		*    - No response
 		*/
 		static const qsf::NamedIdentifier EM5_FIRERECEIVERCOMPONENT_COOLINGSOURCES_CHANGE;
@@ -698,6 +698,23 @@ namespace em5
 		*    - No response
 		*/
 		static const qsf::NamedIdentifier EM5_BUILDING_RECEIVED_FIRE_DAMAGE;
+
+		//[-------------------------------------------------------]
+		//[ Person animation                                      ]
+		//[-------------------------------------------------------]
+		/**
+		*  @brief
+		*    "CreatePersonAnimationController" message, emitted before a person component will create the default person animation controller.
+		*    This can be used to set a custom person animation controller via "em5::PersonComponent::setPersonAnimationController".
+		*
+		*  @remarks
+		*    - Filters:
+		*        (1) person's entity ID
+		*    - Parameters:
+		*        - "personComponent": The person component instance
+		*    - No response
+		*/
+		static const qsf::NamedIdentifier EM5_CREATE_PERSON_ANIMATION_CONTROLLER;
 
 		//[-------------------------------------------------------]
 		//[ Person health                                         ]
@@ -804,7 +821,7 @@ namespace em5
 		*    - Filters:
 		*        (1) Event ID
 		*        (2) Entity ID
-		*    - No Parameters
+		*    - No parameters
 		*    - No response
 		*/
 		static const qsf::NamedIdentifier EM5_EVENT_TIMER_SIGNAL;
@@ -1107,7 +1124,7 @@ namespace em5
 		*        (1) Target person entity ID
 		*        (2) Rescue helicopter entity ID
 		*    - Parameters:
-		*        "IsInjured" "true" if person is injured, in this case its hanging on the robe and blocks the helicopter
+		*        "IsInjured": "true" if person is injured, in this case its hanging on the robe and blocks the helicopter
 		*    - No response
 		*/
 		static const qsf::NamedIdentifier EM5_ACTION_PICKUP_PERSON_WITH_RESCUEHELICOPTER;
@@ -2081,7 +2098,7 @@ namespace em5
 		*  @remarks
 		*    - Filters:
 		*        (1) ID of the entity for which an icon should be added
-		*    - No Parameters
+		*    - No parameters
 		*    - No response
 		*/
 		static const qsf::NamedIdentifier EM5_MINIMAP_REMOVE_ENTITY_CIRCLE_POLYGON;

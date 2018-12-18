@@ -23,6 +23,7 @@
 namespace em5
 {
 	class HelicopterComponent;
+	class HelicopterHatchComponent;
 }
 namespace qsf
 {
@@ -79,9 +80,12 @@ namespace em5
 		private:
 			qsf::WeakPtr<HelicopterComponent> mComponent;
 			qsf::WeakPtr<qsf::TransformComponent> mTransformComponent;
+			qsf::WeakPtr<HelicopterHatchComponent> mHelicopterHatchComponent;
 			bool	mIsFlying;
 			bool	mPositionYChanged;
 			float	mPositionY;
+			bool	mHatchStateChanged;
+			uint8	mHatchState;
 
 			// For client side only
 			struct HistoryEntry
@@ -90,6 +94,8 @@ namespace em5
 				bool	mIsFlying;
 				bool	mPositionYChanged;
 				float	mPositionY;
+				bool	mHatchStateChanged;
+				uint8	mHatchState;
 			};
 
 			std::vector<HistoryEntry>	mHistoryList;

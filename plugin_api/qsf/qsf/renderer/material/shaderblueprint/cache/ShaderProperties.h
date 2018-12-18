@@ -188,4 +188,4 @@ namespace qsf
 //[-------------------------------------------------------]
 //[ Implementation                                        ]
 //[-------------------------------------------------------]
-#include "qsf/renderer/material/shaderblueprint/cache/ShaderProperties.inl"
+#include "qsf/renderer/material/shaderblueprint/cache/ShaderProperties-inl.h"

@@ -572,4 +572,4 @@ namespace qsf
 //[-------------------------------------------------------]
 //[ Implementation                                        ]
 //[-------------------------------------------------------]
-#include "qsf/math/AxisAlignedBoundingBox.inl"
+#include "qsf/math/AxisAlignedBoundingBox-inl.h"

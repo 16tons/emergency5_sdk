@@ -1,4 +1,4 @@
-EMERGENCY 5, 2016, 2017 and 20 SDK for modding. The EMERGENCY 5 SDK contains addtional tools for modders:
+EMERGENCY 5, 2016, 2017 and 20 SDK 4.2.0 for modding. The EMERGENCY 5 SDK contains addtional tools for modders:
 - Plugin SDK (C++) to create game and editor extensions
 - Server software for cooperative work on the same mod project
 - Demo mods and sample projects as starting point for your own mods and plugins

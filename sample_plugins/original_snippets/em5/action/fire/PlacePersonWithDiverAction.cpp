@@ -192,8 +192,8 @@ namespace em5
 					EntityHelper(*carriedPerson).applyPlacement(true);
 
 					// Start animation directly to avoid animation interpolation
+					std::string injuryAnimation = personComponent->getPersonAnimationController().getInjuredAnimation(*carriedPerson);
 					AnimationHelper carriedAnimationHelper(*carriedPerson);
-					std::string injuryAnimation = PersonAnimationController::getInjuredAnimation(*carriedPerson);
 					if (nullptr != healthComponent && healthComponent->isDead())
 					{
 						injuryAnimation = carriedAnimationHelper.getAnimationGenericLightLying();

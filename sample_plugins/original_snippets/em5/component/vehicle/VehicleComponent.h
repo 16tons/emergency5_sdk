@@ -310,6 +310,8 @@ namespace em5
 		void stopSiren();
 		void stopSirenLoop();
 
+		inline AudioProxy& getSirenSFX()  { return mSirenSFX; }
+
 
 	//[-------------------------------------------------------]
 	//[ Public virtual methods                                ]

@@ -81,7 +81,11 @@ namespace em5
 
 		float getMinimumZoomout() const;
 		float getMaximumZoomout() const;
+		float getMinimumPitch() const;
+		float getMaximumPitch() const;
+		void setMinimumZoomout(float minimumZoomout);
 		void setMaximumZoomout(float maximumZoomout);
+		void setMinimumPitch(float minimumPitch);
 		void setMaximumPitch(float maximumPitch);
 		float getCurrentZoomout() const;
 

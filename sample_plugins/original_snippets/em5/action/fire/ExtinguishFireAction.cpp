@@ -65,11 +65,12 @@ namespace em5
 		mTargetEntityId(qsf::getUninitialized<uint64>()),
 		mExtinguishPower(10.0f),
 		mCoolingPower(-10.f),
-		mTargetIsBuring(false),
+		mTargetIsBurning(false),
 		mEffectEntityId(qsf::getUninitialized<uint64>()),
 		mOpticalTargetEntityId(qsf::getUninitialized<uint64>()),
 		mState(STATE_INIT),
-		mMaxExtinguishRange(10.f)
+		mMaxExtinguishRange(10.f),
+		mAutoSearchNewTarget(true)
 	{
 		// Nothing here
 	}
@@ -89,7 +90,7 @@ namespace em5
 		if (nullptr != fireReceiverComponent)
 		{
 			// Set initial value of target is burning, make it in the init function to detect if the target is not burning anymore in the moment we arrived.
-			mTargetIsBuring = fireReceiverComponent->isBurning();
+			mTargetIsBurning = fireReceiverComponent->isBurning();
 		}
 	}
 
@@ -216,7 +217,7 @@ namespace em5
 						EventIdComponent::registerPlayer(fireReceiverComponent->getEntity(), getEntity());
 					}
 
-					if (!fireReceiverComponent->isBurning() && mTargetIsBuring)
+					if (!fireReceiverComponent->isBurning() && mTargetIsBurning)
 					{
 						// We started extinguishing and now the target is not burning -> abort (no error)
 						return qsf::action::RESULT_DONE;
@@ -225,7 +226,7 @@ namespace em5
 
 				startExtinguishEffect();
 
-				if (!mTargetIsBuring)
+				if (!mTargetIsBurning)
 				{
 					// Unregister the lock again, when the target isn't burning -> we are doing cooling here
 					EventIdComponent::releaseTeamLock(mTargetEntityId, getEntity());
@@ -258,7 +259,7 @@ namespace em5
 
 					if (!fireReceiverComponent->isBurning())
 					{
-						if (mTargetIsBuring)
+						if (mTargetIsBurning)
 						{
 							// Target was burning, but is extinguished
 							needNewTarget = true;
@@ -284,7 +285,7 @@ namespace em5
 				// Check if the energy has to change
 				if (needNewTarget)
 				{
-					FireComponent* newTargetInRange = searchNewTargetInRange();
+					FireComponent* newTargetInRange = mAutoSearchNewTarget ? searchNewTargetInRange() : nullptr;
 					if (nullptr != newTargetInRange)
 					{
 						// Push extinguish action, if everything fits, the new action deletes this current action
@@ -300,9 +301,9 @@ namespace em5
 				{
 					// Use old target
 					// Detect if target is start burning
-					if (fireReceiverComponent->isBurning() != mTargetIsBuring)
+					if (fireReceiverComponent->isBurning() != mTargetIsBurning)
 					{
-						mTargetIsBuring = !mTargetIsBuring;
+						mTargetIsBurning = !mTargetIsBurning;
 
 						// Register as cooling energy source and the value
 						fireReceiverComponent->addCoolingEnergySource(getEntityId(), mExtinguishPower, mCoolingPower);

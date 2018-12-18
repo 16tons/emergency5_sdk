@@ -112,4 +112,4 @@ namespace qsf
 //[-------------------------------------------------------]
 //[ Implementation                                        ]
 //[-------------------------------------------------------]
-#include "qsf/renderer/material/shaderblueprint/cache/ShaderCache.inl"
+#include "qsf/renderer/material/shaderblueprint/cache/ShaderCache-inl.h"

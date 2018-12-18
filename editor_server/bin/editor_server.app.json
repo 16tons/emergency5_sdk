@@ -7,7 +7,7 @@
     "Application":
     {
         "ApplicationName": "EMERGENCY 5 Editor Server",
-        "ApplicationVersion": "4.1.0",
+        "ApplicationVersion": "4.2.0",
         "OrganizationName": "Promotion Software GmbH",
         "OrganizationDomain": "promotion-software.de",
         "SplashScreen": "../../data/em5_server_splash_screen.bmp",

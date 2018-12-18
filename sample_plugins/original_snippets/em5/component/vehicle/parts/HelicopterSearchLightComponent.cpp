@@ -112,7 +112,10 @@ namespace em5
 			mBaseLinkComponent = getEntity().getOrCreateComponent<qsf::LinkComponent>();
 
 			mSearchLightEntity = getEntity().getMap().getEntityById(mSearchLightEntityId);
-			mSearchLightLinkComponent = mSearchLightEntity->getOrCreateComponent<qsf::LinkComponent>();
+			if (mSearchLightEntity.valid())
+			{
+				mSearchLightLinkComponent = mSearchLightEntity->getOrCreateComponent<qsf::LinkComponent>();
+			}
 
 			mStartupJobProxy.registerAt(qsf::QsfJobs::ANIMATION_GENERAL, boost::bind(&HelicopterSearchLightComponent::startupLights, this, _1));
 		}
@@ -120,6 +123,7 @@ namespace em5
 
 	void HelicopterSearchLightComponent::serialize(qsf::BinarySerializer& serializer)
 	{
+		// TODO(co) Can we remove this empty method?
 	}
 
 
@@ -136,9 +140,11 @@ namespace em5
 
 			mBaseLinkComponent = getEntity().getOrCreateComponent<qsf::LinkComponent>();
 
-			qsf::Map& map = getEntity().getMap();
-			mSearchLightEntity = map.getEntityById(mSearchLightEntityId);
-			mSearchLightLinkComponent = mSearchLightEntity->getOrCreateComponent<qsf::LinkComponent>();
+			mSearchLightEntity = getEntity().getMap().getEntityById(mSearchLightEntityId);
+			if (mSearchLightEntity.valid())
+			{
+				mSearchLightLinkComponent = mSearchLightEntity->getOrCreateComponent<qsf::LinkComponent>();
+			}
 		}
 	}
 

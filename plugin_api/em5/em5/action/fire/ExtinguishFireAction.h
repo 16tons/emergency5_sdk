@@ -82,6 +82,8 @@ namespace em5
 
 		uint64 getTargetEntityId() const;
 
+		void setAutoSearchNewTarget(bool enable)  { mAutoSearchNewTarget = enable; }
+
 
 	//[-------------------------------------------------------]
 	//[ Public virtual qsf::Actions methods                   ]
@@ -124,11 +126,12 @@ namespace em5
 		uint64	mTargetEntityId;		///< Target entity of the action
 		float	mExtinguishPower;		///< Extinguish power in fire energy delta per second; should be a positive value
 		float	mCoolingPower;			///< Cooling power in fire energy delta per second; should be a negative value
-		bool	mTargetIsBuring;
+		bool	mTargetIsBurning;
 		uint64	mEffectEntityId;		///< ID of the entity with the fire extinguish particle effect. This is created by us and we are responsible for deleting it.
 		uint64	mOpticalTargetEntityId;	///< ID of the entity how is target for the effect (mostly an entity with fire particle, rarely an entity with fire component)
 		State	mState;
 		float	mMaxExtinguishRange;
+		bool	mAutoSearchNewTarget;
 
 		// Internal
 		AudioProxy mAudioProxy;

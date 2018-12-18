@@ -136,7 +136,17 @@ namespace em5
 				ObjectiveHelper objectiveHelper(*this);
 				Objective* treatPersonsObjective = objectiveHelper.getObjectiveByTypeId(ObjectiveHelper::OBJECTIVE_NEED_TREATPERSONS);
 
-				// Check if its repaired by a engineer
+				// Check if ebox caught fire
+				//  -> If so, it must have been by another event
+				EntityHelper entityHelper(mEboxEntity.getSafe());
+				if (entityHelper.isBurning())
+				{
+					// Simple solution: Event failed
+					setFinished(false);
+					break;
+				}
+
+				// Check if it's repaired by an engineer
 				UsableByEngineerComponent* usableByEngineerComponent = mEboxEntity->getComponent<UsableByEngineerComponent>();
 				if (nullptr != usableByEngineerComponent && usableByEngineerComponent->getIsInUse())
 				{
@@ -160,7 +170,7 @@ namespace em5
 					mEboxEntity->destroyComponent<UsableByEngineerComponent>();
 
 					// Start fire
-					EntityHelper(mEboxEntity.getSafe()).startFire(this);
+					entityHelper.startFire(this);
 
 					// Play audio
 					AudioProxy audioProxy;

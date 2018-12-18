@@ -31,6 +31,12 @@ namespace em5
 		return mPersonFlags.isSet(FLAG_HANDCUFFED);
 	}
 
+	inline PersonAnimationController& PersonComponent::getPersonAnimationController()
+	{
+		QSF_ASSERT(nullptr != mPersonAnimationController, "The person animation controller instance is invalid, don't try to retrieve it if person component is not running", QSF_REACT_THROW);
+		return *mPersonAnimationController;
+	}
+
 
 //[-------------------------------------------------------]
 //[ Namespace                                             ]

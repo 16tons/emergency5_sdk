@@ -20,8 +20,9 @@
 #include "em5/logic/local/gangsters/GangsterBaseLogic.h"
 #include "em5/map/EntityHelper.h"
 #include "em5/network/NetworkManager.h"
-#include "em5/plugin/Jobs.h"
 #include "em5/plugin/GameCounters.h"
+#include "em5/plugin/Jobs.h"
+#include "em5/plugin/Messages.h"
 #include "em5/EM5Helper.h"
 
 #include <qsf_ai/navigation/em4Router/RouterComponent.h>
@@ -39,9 +40,11 @@
 #include <qsf/math/CoordinateSystem.h>
 #include <qsf/math/Random.h>	// Only for setting of a name
 #include <qsf/math/Math.h>
+#include <qsf/message/MessageSystem.h>
 #include <qsf/physics/collision/BulletBoxCollisionComponent.h>
 #include <qsf/renderer/mesh/MeshComponent.h>
 #include <qsf/serialization/binary/StlTypeSerialization.h>
+#include <qsf/QsfHelper.h>
 
 
 //[-------------------------------------------------------]
@@ -248,6 +251,12 @@ namespace em5
 		}
 	}
 
+	void PersonComponent::setPersonAnimationController(PersonAnimationController& personAnimationController)
+	{
+		delete mPersonAnimationController;
+		mPersonAnimationController = &personAnimationController;
+	}
+
 	PersonComponent::BoundingBoxType PersonComponent::getBoundingBoxType() const
 	{
 		return mBoundingBoxType;
@@ -388,7 +397,18 @@ namespace em5
 		qsf::SpatialPartitionMemberComponent::registerComponentInPartition(*this);
 
 		// Create the person animation controller
-		mPersonAnimationController = new PersonAnimationController(getEntity());
+		{
+			// Send out a message so a mod can add its own person animation controller instance
+			qsf::MessageParameters messageParameters;
+			messageParameters.setParameter("personComponent", this);
+			QSF_MESSAGE.emitMessage(qsf::MessageConfiguration(Messages::EM5_CREATE_PERSON_ANIMATION_CONTROLLER, getEntityId()), messageParameters);
+
+			// If none was set by the mod, use the default
+			if (nullptr == mPersonAnimationController)
+			{
+				mPersonAnimationController = new PersonAnimationController(getEntity());
+			}
+		}
 
 		// Done
 		return true;

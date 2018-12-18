@@ -10,6 +10,8 @@
 //[-------------------------------------------------------]
 //[ Includes                                              ]
 //[-------------------------------------------------------]
+#include "em5/Export.h"
+
 #include <qsf/component/polygon/PolygonComponent.h>
 
 
@@ -27,7 +29,7 @@ namespace em5
 	*  @brief
 	*    AI water polygon component class
 	*/
-	class WaterDeepTypePolygonComponent : public qsf::PolygonComponent
+	class EM5_API_EXPORT WaterDeepTypePolygonComponent : public qsf::PolygonComponent
 	{
 
 

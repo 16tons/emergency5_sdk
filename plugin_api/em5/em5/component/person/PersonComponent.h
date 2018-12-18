@@ -216,6 +216,14 @@ namespace em5
 
 		void forceAnimationUpdate();
 
+		inline PersonAnimationController& getPersonAnimationController();
+
+		/**
+		*  @brief
+		*    Set a custom person animation controller; the person component will take over ownership of the controller and destroy it when not needed any more
+		*/
+		void setPersonAnimationController(PersonAnimationController& personAnimationController);
+
 		/**
 		*  @brief
 		*    Change the ogre boundingbox. Defaults are usually fine and no change is necessary.
