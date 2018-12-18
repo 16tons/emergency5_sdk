@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2017 Promotion Software GmbH
+// Copyright (C) 2012-2018 Promotion Software GmbH
 
 
 // Do never ever include this header within another public header!
